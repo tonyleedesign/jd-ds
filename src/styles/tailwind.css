@@ -1,0 +1,31 @@
+@import "tailwindcss" source(none);
+@source "../../src";
+
+@import "tw-animate-css";
+
+/* ─── Global radius tokens (non-theme-specific) ─────────────────────────── */
+:root {
+  --radius-none: 0px;
+  --radius-soft: 1px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+}
+
+html {
+  font-size: var(--root-font-size);
+  font-family: var(--font-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Component animations ──────────────────────────────────────────────── */
+@keyframes judi-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
