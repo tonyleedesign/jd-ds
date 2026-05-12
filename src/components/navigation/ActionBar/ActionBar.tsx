@@ -7,8 +7,8 @@ import type { BreadcrumbItem } from '../Breadcrumb'
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface ActionBarProps {
-  /** Breadcrumb trail — always present */
-  breadcrumbs: BreadcrumbItem[]
+  /** Breadcrumb trail — omit if not needed */
+  breadcrumbs?: BreadcrumbItem[]
   /** Page / module title — optional */
   title?: string
   /**
@@ -32,7 +32,7 @@ export interface ActionBarProps {
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function ActionBar({
-  breadcrumbs,
+  breadcrumbs = [],
   title,
   onBackClick,
   secondaryContent,
