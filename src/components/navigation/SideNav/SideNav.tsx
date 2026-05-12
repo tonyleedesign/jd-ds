@@ -21,20 +21,18 @@ export interface SideNavProps {
 export function SideNav({ isOpen, onToggle, children, className = '' }: SideNavProps) {
   return (
     <aside
-      className={`flex flex-col bg-(--bg-surface-base) ${className}`}
+      className={`flex flex-col shrink-0 h-full bg-(--bg-surface-base) ${className}`}
       style={{
         width:       isOpen ? 'var(--sidenav-width-expanded)' : undefined,
         borderRight: 'var(--space-1) solid var(--border-surface-base)',
-        flexShrink:  0,
-        height:      '100%',
         transition:  'width 0.2s ease',
       }}
     >
       {isOpen ? (
         // ── Expanded ──────────────────────────────────────────────────────────
-        <div className="flex flex-col p-(--inset-7)">
-          {/* X close — right-aligned */}
-          <div className="flex justify-end">
+        <>
+          {/* X close — fixed at top, never scrolls */}
+          <div className="flex justify-end shrink-0 px-(--inset-7) pt-(--inset-7)">
             <Button
               variant="tertiary"
               iconOnly
@@ -45,13 +43,13 @@ export function SideNav({ isOpen, onToggle, children, className = '' }: SideNavP
             </Button>
           </div>
 
-          {/* Nav items */}
+          {/* Nav items — scrollable */}
           {children && (
-            <div className="flex flex-col mt-(--stack-5)">
+            <div className="flex flex-col overflow-y-auto px-(--inset-7) pb-(--inset-7)">
               {children}
             </div>
           )}
-        </div>
+        </>
       ) : (
         // ── Collapsed ─────────────────────────────────────────────────────────
         <div className="flex justify-center pt-(--inset-7) px-(--inset-3)">
@@ -64,7 +62,7 @@ export function SideNav({ isOpen, onToggle, children, className = '' }: SideNavP
             <Icon
               icon={MenuBarsIcon}
               size="regular"
-              style={{ color: 'var(--icon-action-secondary-idle)' }}
+              className="text-(--icon-action-secondary-idle)"
             />
           </Button>
         </div>

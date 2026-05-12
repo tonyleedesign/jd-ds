@@ -10,6 +10,7 @@ export const spacing = {
   'space-11': '0.6875rem',  // 11px
   'space-12': '0.75rem',    // 12px
   'space-16': '1rem',       // 16px
+  'space-18': '1.125rem',   // 18px
   'space-20': '1.25rem',    // 20px
   'space-24': '1.5rem',     // 24px
   'space-30': '1.875rem',   // 30px

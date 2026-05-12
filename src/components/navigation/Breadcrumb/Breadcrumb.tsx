@@ -13,24 +13,32 @@ export interface BreadcrumbProps {
   className?: string
 }
 
+// ─── Styles ───────────────────────────────────────────────────────────────────
+
+const LABEL_STYLE = {
+  fontSize:   'var(--breadcrumb-label-size)',
+  lineHeight: 'var(--breadcrumb-label-line-height)',
+  fontWeight: 'var(--breadcrumb-label-weight)',
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function Breadcrumb({ items, className = '' }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb" className={className}>
-      <ol className="flex items-center gap-(--space-8)">
+      <ol className="flex items-center gap-(--inline-2)">
         {items.map((item, i) => {
           const isLast = i === items.length - 1
 
           return (
-            <li key={i} className="flex items-center gap-(--space-8)">
+            <li key={i} className="flex items-center gap-(--inline-2)">
 
               {/* Chevron separator — not before the first item */}
               {i > 0 && (
                 <Icon
                   icon={ChevronRightIcon}
                   size="small"
-                  style={{ color: 'var(--text-navigation-link)', flexShrink: 0 }}
+                  className="text-(--text-navigation-link) shrink-0"
                 />
               )}
 
@@ -38,29 +46,17 @@ export function Breadcrumb({ items, className = '' }: BreadcrumbProps) {
                 // Current page — no hover, no link
                 <span
                   aria-current="page"
-                  style={{
-                    fontSize:   'var(--breadcrumb-label-size)',
-                    lineHeight: 'var(--breadcrumb-label-line-height)',
-                    fontWeight: 'var(--breadcrumb-label-weight)',
-                    color:      'var(--text-navigation-link)',
-                    cursor:     'default',
-                  }}
+                  className="text-(--text-navigation-link) cursor-default"
+                  style={LABEL_STYLE}
                 >
                   {item.label}
                 </span>
               ) : (
-                // Ancestor — hoverable with underline
+                // Ancestor — hoverable with underline, focus ring for keyboard nav
                 <a
                   href={item.href ?? '/'}
-                  style={{
-                    fontSize:        'var(--breadcrumb-label-size)',
-                    lineHeight:      'var(--breadcrumb-label-line-height)',
-                    fontWeight:      'var(--breadcrumb-label-weight)',
-                    color:           'var(--text-navigation-link)',
-                    textDecoration:  'none',
-                  }}
-                  onMouseEnter={e => (e.currentTarget.style.textDecoration = 'underline')}
-                  onMouseLeave={e => (e.currentTarget.style.textDecoration = 'none')}
+                  className="text-(--text-navigation-link) no-underline hover:underline focus-visible:underline outline-none"
+                  style={LABEL_STYLE}
                 >
                   {item.label}
                 </a>

@@ -16,6 +16,7 @@ const minervaSpacing = {
   'space-11': spacing['space-11'],
   'space-12': spacing['space-12'],
   'space-16': spacing['space-16'],
+  'space-18': spacing['space-18'],
   'space-20': spacing['space-20'],
   'space-24': spacing['space-24'],
   'space-30': spacing['space-30'],
@@ -24,7 +25,7 @@ const minervaSpacing = {
   'space-40': spacing['space-40'],
 
   // ─── Inset — padding inside containers ───────────────────────────────────
-  'inset-1': spacing['space-4'],   //  4px — badges, tight chips
+  'inset-1': spacing['space-4'],   //  4px — tight lozenges, badges
   'inset-2': spacing['space-6'],   //  6px — dense table cells
   'inset-3': spacing['space-8'],   //  8px — compact inputs, nav items
   'inset-4': spacing['space-10'],  // 10px — default table cells, list items

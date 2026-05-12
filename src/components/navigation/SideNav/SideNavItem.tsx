@@ -17,7 +17,7 @@ export interface SideNavItemProps {
 
 // ─── Shared styles ────────────────────────────────────────────────────────────
 
-const itemTypography: React.CSSProperties = {
+const itemTypography = {
   fontSize:   'var(--menu-item-lg-size)',
   lineHeight: 'var(--menu-item-lg-line-height)',
   fontWeight: 'var(--menu-item-lg-weight)',
