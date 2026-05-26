@@ -68,6 +68,10 @@ import { AppLayout } from "../components/layout/AppLayout";
 import { SideNavItem } from "../components/navigation/SideNav";
 import { Button } from "../components/ui/Button";
 import { ButtonGroup } from "../components/ui/ButtonGroup";
+import { Text } from "../components/ui/Text";
+import { Tag } from "../components/ui/Tag";
+import { Badge } from "../components/ui/Badge";
+import { MetaItem } from "../components/ui/MetaItem";
 import { AddIcon } from "../components/ui/Icon";
 ```
 
@@ -82,6 +86,7 @@ Every page must use AppLayout. Use this as the base for `src/app/App.tsx`:
 ```tsx
 import { AppLayout } from "../components/layout/AppLayout";
 import { SideNavItem } from "../components/navigation/SideNav";
+import { Tag } from "../components/ui/Tag";
 
 document.documentElement.setAttribute("data-theme", "minerva");
 
@@ -92,6 +97,7 @@ export default function App() {
       appName="My App"
       breadcrumbs={[{ label: "Home" }]}
       title="Dashboard"
+      titleMeta={<Tag variant="info">Draft</Tag>}
       sideNavContent={
         <>
           <SideNavItem label="Home" active />

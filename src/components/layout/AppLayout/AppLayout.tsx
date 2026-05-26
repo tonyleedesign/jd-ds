@@ -52,6 +52,8 @@ export interface AppLayoutProps {
   secondaryContent?: ReactNode
   /** Action buttons for the far right of the ActionBar */
   actions?: ReactNode
+  /** Optional content rendered inline to the right of the title (e.g. Tag, MetaItem) */
+  titleMeta?: ReactNode
 
   // ── SideNav ─────────────────────────────────────────────────────────────────
   /** Nav items rendered inside the SideNav. Omit this prop entirely if the design has no side navigation — the SideNav will not render at all. */
@@ -88,6 +90,7 @@ export function AppLayout({
   onBackClick,
   secondaryContent,
   actions,
+  titleMeta,
   // SideNav
   sideNavContent,
   defaultSideNavOpen = true,
@@ -122,6 +125,7 @@ export function AppLayout({
       onBackClick={onBackClick}
       secondaryContent={secondaryContent}
       actions={actions}
+      titleMeta={titleMeta}
     />
   )
 

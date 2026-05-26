@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Button } from '../../ui/Button'
 import { ArrowLeftIcon } from '../../ui/Icon'
+import { Text } from '../../ui/Text'
 import { Breadcrumb } from '../Breadcrumb'
 import type { BreadcrumbItem } from '../Breadcrumb'
 
@@ -26,6 +27,11 @@ export interface ActionBarProps {
    * Wrap in <ButtonGroup> with primary rightmost.
    */
   actions?: ReactNode
+  /**
+   * Optional content rendered inline to the right of the title (e.g. Tag, MetaItem).
+   * Only renders when title is present.
+   */
+  titleMeta?: ReactNode
   className?: string
 }
 
@@ -37,6 +43,7 @@ export function ActionBar({
   onBackClick,
   secondaryContent,
   actions,
+  titleMeta,
   className = '',
 }: ActionBarProps) {
   const hasTitleRow = title || onBackClick
@@ -56,7 +63,7 @@ export function ActionBar({
           {/* Left — title + optional secondary row */}
           <div className="flex flex-col gap-(--stack-2)">
             {hasTitleRow && (
-              <div className="flex items-center gap-(--inline-3)">
+              <div className="flex items-center gap-(--inline-4)">
                 {onBackClick && (
                   <Button
                     variant="secondary"
@@ -68,24 +75,22 @@ export function ActionBar({
                 )}
 
                 {title && (
-                  <h1
-                    className="text-(--text-surface-base)"
-                    style={{
-                      fontSize:   'var(--heading-xl-size)',
-                      lineHeight: 'var(--heading-xl-line-height)',
-                      fontWeight: 'var(--heading-xl-weight)',
-                      margin:     0,
-                    }}
-                  >
+                  <Text as="h1" variant="heading-xl" className="text-(--text-surface-base)" style={{ margin: 0 }}>
                     {title}
-                  </h1>
+                  </Text>
+                )}
+
+                {titleMeta && (
+                  <div className="flex items-center gap-(--inline-2)">
+                    {titleMeta}
+                  </div>
                 )}
 
               </div>
             )}
 
             {secondaryContent && (
-              <div className="flex items-center gap-(--inline-3)">
+              <div className="flex items-center gap-(--inline-4)">
                 {secondaryContent}
               </div>
             )}

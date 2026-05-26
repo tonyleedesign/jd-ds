@@ -5,6 +5,10 @@ const minervaTypography = {
   'font-base': fontFamily['source-sans-3'],
   'font-code': fontFamily['fira-code'],
 
+  // ─── Font Weights ─────────────────────────────────────────────────────────
+  'font-weight-regular':  fontWeight['regular'],
+  'font-weight-semibold': fontWeight['semibold'],
+
   // ─── Body ─────────────────────────────────────────────────────────────────
   'body-sm-size':        fontSize['100'],   // 12px / 0.75rem
   'body-sm-line-height': lineHeight['200'], // 16px / 1rem
@@ -71,6 +75,11 @@ const minervaTypography = {
   'button-label-size':        fontSize['300'],
   'button-label-line-height': lineHeight['400'],
   'button-label-weight':      fontWeight['semibold'],
+
+  // ─── Tag Label ────────────────────────────────────────────────────────────
+  'tag-label-size':        fontSize['100'],   // 12px / 0.75rem
+  'tag-label-line-height': lineHeight['050'], // 12px / 0.75rem (tight, fits pill shape)
+  'tag-label-weight':      fontWeight['semibold'],
 } as const
 
 const evolutionTypography = {

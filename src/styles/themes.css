@@ -234,6 +234,8 @@
   --sidenav-width-expanded: 256px;
   --font-base: "Source Sans 3", sans-serif;
   --font-code: "Fira Code", monospace;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
   --body-sm-size: 0.75rem;
   --body-sm-line-height: 1rem;
   --body-sm-weight: 400;
@@ -279,6 +281,9 @@
   --button-label-size: 0.9375rem;
   --button-label-line-height: 1.25rem;
   --button-label-weight: 600;
+  --tag-label-size: 0.75rem;
+  --tag-label-line-height: 0.75rem;
+  --tag-label-weight: 600;
   --root-font-size: 16px;
 }
 
@@ -518,6 +523,8 @@
   --sidenav-width-expanded: 256px;
   --font-base: "Inter", sans-serif;
   --font-code: "Fira Code", monospace;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
   --body-sm-size: 0.75rem;
   --body-sm-line-height: 1rem;
   --body-sm-weight: 400;
@@ -563,5 +570,8 @@
   --button-label-size: 0.9375rem;
   --button-label-line-height: 1.25rem;
   --button-label-weight: 600;
+  --tag-label-size: 0.75rem;
+  --tag-label-line-height: 0.75rem;
+  --tag-label-weight: 600;
   --root-font-size: 14px;
 }

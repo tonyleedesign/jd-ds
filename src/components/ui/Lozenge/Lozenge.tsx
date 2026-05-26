@@ -1,3 +1,5 @@
+import { Text } from '../Text'
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export type LozengeVariant = 'light' | 'dark'
@@ -19,15 +21,12 @@ const VARIANT_CLASSES: Record<LozengeVariant, string> = {
 
 export function Lozenge({ count = 0, variant = 'light', className = '' }: LozengeProps) {
   return (
-    <span
+    <Text
+      as="span"
+      variant="label-md"
       className={`inline-flex items-center justify-center rounded-(--radius-full) px-(--inset-2) py-(--space-2) ${VARIANT_CLASSES[variant]} ${className}`}
-      style={{
-        fontSize:   'var(--label-md-size)',
-        lineHeight: 'var(--label-md-line-height)',
-        fontWeight: 'var(--label-md-weight)',
-      }}
     >
       {count}
-    </span>
+    </Text>
   )
 }
