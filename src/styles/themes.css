@@ -63,6 +63,7 @@
   --bg-surface-accent-primary: #4F5B97;
   --bg-surface-accent-secondary: #3E5D6F;
   --bg-surface-accent-tertiary: #AEBFCC;
+  --bg-surface-brand: #005387;
   --border-action-secondary-idle: #0071B3;
   --border-action-secondary-hover: #0084D2;
   --border-action-secondary-pressed: #005E94;
@@ -352,6 +353,7 @@
   --bg-surface-accent-primary: #4724A8;
   --bg-surface-accent-secondary: #394960;
   --bg-surface-accent-tertiary: #9FAFC6;
+  --bg-surface-brand: #173082;
   --border-action-secondary-idle: #3357CC;
   --border-action-secondary-hover: #4B6BD2;
   --border-action-secondary-pressed: #2C4CB3;

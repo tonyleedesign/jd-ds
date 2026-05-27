@@ -97,6 +97,7 @@ const minervaTokens = {
   'bg-surface-accent-primary':                 minerva['purple']['600'],
   'bg-surface-accent-secondary':               minerva['neutral']['700'],
   'bg-surface-accent-tertiary':                minerva['neutral']['300'],
+  'bg-surface-brand':                          minerva['turquoise']['700'],
 
   // ─── Border — Action ──────────────────────────────────────────────────────
   'border-action-secondary-idle':              minerva['turquoise']['500'],
@@ -357,6 +358,7 @@ const evolutionTokens = {
   'bg-surface-accent-primary':                 evolution['purple']['600'],
   'bg-surface-accent-secondary':               evolution['neutral']['700'],
   'bg-surface-accent-tertiary':                evolution['neutral']['300'],
+  'bg-surface-brand':                          evolution['turquoise']['700'],
 
   // ─── Border — Action ──────────────────────────────────────────────────────
   'border-action-secondary-idle':              evolution['turquoise']['500'],

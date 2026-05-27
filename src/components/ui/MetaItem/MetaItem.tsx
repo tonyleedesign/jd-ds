@@ -1,5 +1,5 @@
 import type { ComponentType, SVGProps } from 'react'
-import { Icon } from '../Icon'
+import { Icon, LinkOutIcon } from '../Icon'
 import { Text } from '../Text'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -11,12 +11,17 @@ export interface MetaItemProps {
   label: string
   /** Regular value text */
   value: string
+  /**
+   * When provided, renders the value as a clickable underlined link with a
+   * LinkOut icon. Leave routing/navigation to the consumer.
+   */
+  onClick?: () => void
   className?: string
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export function MetaItem({ icon, label, value, className = '' }: MetaItemProps) {
+export function MetaItem({ icon, label, value, onClick, className = '' }: MetaItemProps) {
   return (
     <div className={`inline-flex items-center gap-(--inline-1) ${className}`}>
       {icon && (
@@ -25,9 +30,23 @@ export function MetaItem({ icon, label, value, className = '' }: MetaItemProps) 
       <Text variant="body-md" weight="semibold" className="text-(--text-surface-base)">
         {label}:
       </Text>
-      <Text variant="body-md" className="text-(--text-surface-base)">
-        {value}
-      </Text>
+      {onClick ? (
+        <button
+          type="button"
+          onClick={onClick}
+          className="inline-flex items-center gap-(--inline-1) cursor-pointer bg-transparent p-0"
+          style={{ border: 'none' }}
+        >
+          <Text variant="body-md" className="text-(--text-action-hyperlink) underline">
+            {value}
+          </Text>
+          <Icon icon={LinkOutIcon} size="small" className="text-(--icon-action-hyperlink) shrink-0" />
+        </button>
+      ) : (
+        <Text variant="body-md" className="text-(--text-surface-base)">
+          {value}
+        </Text>
+      )}
     </div>
   )
 }
