@@ -64,7 +64,14 @@ titleMeta={<Tag variant="success">Approved</Tag>}
 secondaryContent={<MetaItem icon={ClockIcon} label="Elapses" value="05/26/2026 12:00PM EST" />}
 ```
 
-### 4. SideNav
+### 4. Content area
+
+| Prop | When to include |
+|------|-----------------|
+| `subBar` | Design shows a full-width tab bar, filter strip, or toolbar directly below the ActionBar |
+| `noPadding` | Design has full-bleed content (tables, split views) — removes the default 40px body padding |
+
+### 5. SideNav
 **Only include `sideNavContent` if the design explicitly shows a sidebar.** If there is no sidebar, omit this prop entirely — do not pass null, undefined, or an empty fragment.
 
 If the design has a sidebar:

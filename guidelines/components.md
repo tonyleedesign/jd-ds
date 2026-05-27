@@ -2,22 +2,25 @@
 
 This kit provides a complete set of components. Always use them — never build custom components or layouts from scratch.
 
+**Setup required first:** copy components from `node_modules/@make-kits/jh-ds/src/components/` into `src/components/` before writing any code. See `setup.md` step 1. All import paths below are relative from `src/app/`.
+
+---
+
 ## Available components
 
-All components are imported from the kit package:
-
-```tsx
-import { ComponentName } from "../components/...";
-```
-
-| Component                | Import path                        |
-| ------------------------ | ---------------------------------- |
-| `AppLayout`              | `../components/layout/AppLayout`   |
-| `Button`                 | `../components/ui/Button`          |
-| `ButtonGroup`            | `../components/ui/ButtonGroup`     |
-| `Icon` + all icons       | `../components/ui/Icon`            |
-| `Spinner`                | `../components/ui/Spinner`         |
-| `SideNav`, `SideNavItem` | `../components/navigation/SideNav` |
+| Component                | Import path                              |
+| ------------------------ | ---------------------------------------- |
+| `AppLayout`              | `../components/layout/AppLayout`         |
+| `SideNav`, `SideNavItem` | `../components/navigation/SideNav`       |
+| `Button`                 | `../components/ui/Button`                |
+| `ButtonGroup`            | `../components/ui/ButtonGroup`           |
+| `Text`                   | `../components/ui/Text`                  |
+| `Tag`                    | `../components/ui/Tag`                   |
+| `Badge`                  | `../components/ui/Badge`                 |
+| `MetaItem`               | `../components/ui/MetaItem`              |
+| `Lozenge`                | `../components/ui/Lozenge`               |
+| `Icon` + all icons       | `../components/ui/Icon`                  |
+| `Spinner`                | `../components/ui/Spinner`               |
 
 ---
 
@@ -26,8 +29,8 @@ import { ComponentName } from "../components/...";
 Every page must start with AppLayout. No exceptions — not for simple pages, not for single components. Never build a custom layout or render content outside of AppLayout.
 
 ```tsx
-import { AppLayout } from "../components/layout/AppLayout";
-import { SideNavItem } from "../components/navigation/SideNav";
+import { AppLayout } from '../components/layout/AppLayout'
+import { SideNavItem } from '../components/navigation/SideNav'
 
 export default function MyPage() {
   return (
@@ -52,10 +55,6 @@ export default function MyPage() {
 ### With page actions
 
 ```tsx
-import { Button } from '../components/ui/Button'
-import { ButtonGroup } from '../components/ui/ButtonGroup'
-import { AddIcon } from '../components/ui/Icon'
-
 <AppLayout
   ...
   actions={
@@ -65,6 +64,33 @@ import { AddIcon } from '../components/ui/Icon'
     </ButtonGroup>
   }
 >
+```
+
+### With status tag and metadata
+
+```tsx
+<AppLayout
+  ...
+  titleMeta={<Tag variant="success">Approved</Tag>}
+  secondaryContent={<MetaItem icon={ClockIcon} label="Elapses" value="05/26/2026 12:00PM EST" />}
+>
+```
+
+### With sub-bar (tab bar, filter strip)
+
+```tsx
+<AppLayout
+  ...
+  subBar={<MyTabBar />}
+>
+```
+
+### Full-bleed content (no padding)
+
+```tsx
+<AppLayout noPadding ...>
+  {/* content manages its own layout and padding */}
+</AppLayout>
 ```
 
 ### Detail page with back button
@@ -80,15 +106,72 @@ import { AddIcon } from '../components/ui/Icon'
 
 ---
 
+## Text
+
+Always use `Text` for typography — never Tailwind text classes or raw inline styles.
+
+```tsx
+import { Text } from '../components/ui/Text'
+
+<Text as="h1" variant="heading-xl" className="text-(--text-surface-base)">Page Title</Text>
+<Text variant="body-md" className="text-(--text-surface-base)">Body copy</Text>
+<Text variant="body-md" weight="semibold">Semibold</Text>
+```
+
+Variants: `heading-xl/lg/md/sm/xs` | `body-lg/md/sm` | `label-lg/md/sm` | `tag-label`
+
+Use `as` to set the HTML element (`h1`–`h3`, `p`, `span` — defaults to `span`). Use `weight="semibold"` to override a variant's default weight.
+
+---
+
+## Tag
+
+Read-only status labels. Text only — no interactive elements.
+
+```tsx
+import { Tag } from '../components/ui/Tag'
+
+<Tag variant="success">Approved</Tag>
+<Tag variant="warning">Pending Review</Tag>
+<Tag variant="error">Rejected</Tag>
+```
+
+Variants: `info` | `info-high-contrast` | `success` | `warning` | `error` | `system` | `system-alt`
+
+---
+
+## Badge
+
+Same visual as the `info` Tag but supports an optional dismiss button. Use for removable filters or selections.
+
+```tsx
+import { Badge } from '../components/ui/Badge'
+
+<Badge>Label</Badge>
+<Badge onClose={() => removeFilter()}>Status: Active</Badge>
+```
+
+---
+
+## MetaItem
+
+Inline key/value pair with an optional leading icon. Use in ActionBar `secondaryContent` or anywhere metadata is displayed.
+
+```tsx
+import { MetaItem } from '../components/ui/MetaItem'
+import { ClockIcon } from '../components/ui/Icon'
+
+<MetaItem label="Assigned" value="Chad Ontario" />
+<MetaItem icon={ClockIcon} label="Elapses" value="05/26/2026 12:00PM EST" />
+```
+
+---
+
 ## Button
 
 ```tsx
-import { Button } from "../components/ui/Button";
-import {
-  AddIcon,
-  DeleteIcon,
-  ArrowRightIcon,
-} from "../components/ui/Icon";
+import { Button } from '../components/ui/Button'
+import { AddIcon, DeleteIcon, ArrowRightIcon } from '../components/ui/Icon'
 ```
 
 | Variant     | Use                                |
@@ -121,12 +204,13 @@ import {
 Always wrap related buttons in ButtonGroup. Primary action goes rightmost.
 
 ```tsx
-import { ButtonGroup } from "../components/ui/ButtonGroup";
+import { ButtonGroup } from '../components/ui/ButtonGroup'
+import { Button } from '../components/ui/Button'
 
 <ButtonGroup>
   <Button variant="secondary">Cancel</Button>
   <Button variant="primary">Save</Button>
-</ButtonGroup>;
+</ButtonGroup>
 ```
 
 ---
@@ -187,7 +271,7 @@ import { SideNavItem } from '../components/navigation/SideNav'
 Used automatically inside Button when `loading` is set. Only use standalone for page or section loading states.
 
 ```tsx
-import { Spinner } from "../components/ui/Spinner";
+import { Spinner } from '../components/ui/Spinner'
 
-<Spinner />;
+<Spinner />
 ```

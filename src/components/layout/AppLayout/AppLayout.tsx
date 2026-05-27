@@ -62,6 +62,16 @@ export interface AppLayoutProps {
   defaultSideNavOpen?: boolean
 
   // ── Page content ────────────────────────────────────────────────────────────
+  /**
+   * Optional full-width component rendered between the ActionBar and the page body.
+   * Renders flush to all edges — use for tab bars, filter strips, contextual toolbars.
+   */
+  subBar?: ReactNode
+  /**
+   * When true, removes the default 40px padding from the page body.
+   * Use for full-bleed layouts (e.g. split views, tables that extend edge-to-edge).
+   */
+  noPadding?: boolean
   children?: ReactNode
   className?: string
 }
@@ -95,6 +105,8 @@ export function AppLayout({
   sideNavContent,
   defaultSideNavOpen = true,
   // Content
+  subBar,
+  noPadding          = false,
   children,
   className          = '',
 }: AppLayoutProps) {
@@ -150,7 +162,8 @@ export function AppLayout({
             {sideNavOpen && sideNav}
             <div className="flex flex-col flex-1 overflow-hidden">
               {actionBar}
-              <main aria-label="Page content" className="flex-1 overflow-auto bg-(--bg-surface-subtle) p-(--layout-4)">
+              {subBar && <div className="shrink-0">{subBar}</div>}
+              <main aria-label="Page content" className={`flex-1 overflow-auto bg-(--bg-surface-subtle) ${noPadding ? '' : 'p-(--layout-4)'}`}>
                 {children}
               </main>
             </div>
@@ -164,10 +177,11 @@ export function AppLayout({
           <div className="sticky top-0 z-50">
             {header}
             {actionBar}
+            {subBar && <div className="shrink-0">{subBar}</div>}
           </div>
           <div className="flex flex-1 overflow-hidden">
             {sideNav}
-            <main className="flex-1 overflow-auto bg-(--bg-surface-subtle) p-(--layout-4)">
+            <main aria-label="Page content" className={`flex-1 overflow-auto bg-(--bg-surface-subtle) ${noPadding ? '' : 'p-(--layout-4)'}`}>
               {children}
             </main>
           </div>
