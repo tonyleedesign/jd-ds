@@ -1,32 +1,22 @@
 # Setup
 
-Before writing any code, complete these four steps in order.
+> ⚠️ **Before writing a single line of code or any import statement:** check that `src/components/` exists in the project. If it does not, run Step 1 right now. Writing imports before the components are copied will always fail.
+
+Complete these steps in order.
 
 ---
 
-## 1. Copy components and assets into the project
+## 1. Copy components into your project
 
-Run these commands once:
+**Do this first — before touching any other file.**
+
+Copy the pre-built components from the package into `src/components/`:
 
 ```bash
 cp -r node_modules/@make-kits/jh-ds/dist/components src/components
 ```
 
-After running, the project will have:
-
-```
-src/
-  components/
-    layout/AppLayout/
-    navigation/SideNav/
-    navigation/GlobalHeader/
-    navigation/ActionBar/
-    navigation/Breadcrumb/
-    ui/Button/
-    ui/ButtonGroup/
-    ui/Icon/
-    ui/Spinner/
-```
+Verify `src/components/` now exists with subfolders (`layout/`, `navigation/`, `ui/`) before continuing. If the folder is missing or empty, the copy failed — do not proceed.
 
 ---
 
@@ -59,23 +49,25 @@ Two options:
 
 ---
 
-## 4. Import components using relative paths
+## 4. Import components using local paths
 
-Always import from `src/components/` — never from the package directly:
+After copying, import each component from its local path. Never import from `@make-kits/jh-ds` directly — use the local paths below:
 
 ```tsx
 import { AppLayout } from "../components/layout/AppLayout";
 import { SideNavItem } from "../components/navigation/SideNav";
-import { Button } from "../components/ui/Button";
-import { ButtonGroup } from "../components/ui/ButtonGroup";
+import { Button, ButtonGroup } from "../components/ui/Button";
 import { Text } from "../components/ui/Text";
 import { Tag } from "../components/ui/Tag";
 import { Badge } from "../components/ui/Badge";
 import { MetaItem } from "../components/ui/MetaItem";
-import { AddIcon } from "../components/ui/Icon";
+import { Steps } from "../components/ui/Steps";
+import { KeyCaseDetails } from "../components/ui/KeyCaseDetails";
+import { Icon, AddIcon, SearchIcon, DeleteIcon } from "../components/ui/Icon";
+import { Spinner } from "../components/ui/Spinner";
 ```
 
-Only import the components you actually use.
+Only import the components you actually use. See `components.md` for the full list of components and their exact import paths.
 
 ---
 

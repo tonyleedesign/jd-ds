@@ -34,9 +34,48 @@ export interface KeyCaseDetailsSection {
 
 export interface KeyCaseDetailsProps {
   /** Columns rendered side by side. Each section expands vertically on toggle. */
-  sections: KeyCaseDetailsSection[]
+  sections?: KeyCaseDetailsSection[]
   className?: string
 }
+
+// ─── Default sections ─────────────────────────────────────────────────────────
+
+const DEFAULT_SECTIONS: KeyCaseDetailsSection[] = [
+  {
+    fields: [
+      { label: 'Member',        value: 'Walter White' },
+      { label: 'Member ID',     value: '1234567' },
+      { label: 'Person Code',   value: '01' },
+      { label: 'Date of Birth', value: '01/01/2000' },
+    ],
+  },
+  {
+    fields: [
+      { label: 'Prescriber', value: 'Taylor Sweezy, MD' },
+      { label: 'Phone',      value: '(123) 456-7890' },
+      { label: 'Fax',        value: '(123) 456-7890' },
+    ],
+  },
+  {
+    fields: [
+      { label: 'Drug',                 value: 'Humira Pediatric Crohns Start 80MG/0.4ML Prefilled Syringe Kit' },
+      { label: 'NDC',                  value: '12345678901' },
+      { label: 'GPI',                  value: '12345678901234' },
+      { label: 'Quantity/Days Supply', value: '30/30', siblings: [{ label: 'MONY', value: 'Y' }] },
+    ],
+  },
+  {
+    fields: [
+      { label: 'Origin', value: 'Fax' },
+    ],
+  },
+  {
+    fields: [
+      { label: 'Plan Benefit', value: 'J.P. Wynne High School', onClick: () => {} },
+      { label: 'Formulary',    value: 'Liberty',                onClick: () => {}, primary: true },
+    ],
+  },
+]
 
 // ─── Value renderer (plain text or underlined link) ───────────────────────────
 
@@ -65,7 +104,7 @@ function FieldValue({ value, onClick }: Pick<KeyCaseDetailsField, 'value' | 'onC
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export function KeyCaseDetails({ sections, className = '' }: KeyCaseDetailsProps) {
+export function KeyCaseDetails({ sections = DEFAULT_SECTIONS, className = '' }: KeyCaseDetailsProps) {
   const [expanded, setExpanded] = useState(false)
 
   return (
@@ -87,7 +126,7 @@ export function KeyCaseDetails({ sections, className = '' }: KeyCaseDetailsProps
         >
           <Icon
             icon={ChevronRightIcon}
-            size="small"
+            size="regular"
             className="text-(--text-surface-inverse)"
             style={{
               transform:  expanded ? 'rotate(90deg)' : 'rotate(0deg)',

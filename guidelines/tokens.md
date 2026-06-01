@@ -21,20 +21,20 @@ Scale runs 1–7 for inset, 1–5 for stack/inline, 1–4 for layout.
 
 ### Values
 
-| Token        | Value | Use                                       |
-| ------------ | ----- | ----------------------------------------- |
-| `--inset-3`  | 8px   | Button padding, nav items, compact inputs |
-| `--inset-4`  | 10px  | Table cells, list items                   |
-| `--inset-5`  | 12px  | Default inputs                            |
-| `--inset-6`  | 16px  | Cards, panels, header padding             |
-| `--inset-7`  | 24px  | Dialogs, page sections, sidenav           |
-| `--inline-2` | 8px   | Icon + label gap                          |
-| `--inline-3` | 12px  | Between grouped items                     |
-| `--inline-4` | 16px  | Between distinct groups                   |
-| `--stack-2`  | 8px   | Tightly related items                     |
-| `--stack-3`  | 12px  | Related items                             |
-| `--stack-4`  | 16px  | Distinct groups                           |
-| `--layout-4` | 40px  | Page content padding                      |
+| Token | Value | Use |
+|-------|-------|-----|
+| `--inset-3` | 8px | Button padding, nav items, compact inputs |
+| `--inset-4` | 10px | Table cells, list items |
+| `--inset-5` | 12px | Default inputs |
+| `--inset-6` | 16px | Cards, panels, header padding |
+| `--inset-7` | 24px | Dialogs, page sections, sidenav |
+| `--inline-2` | 8px | Icon + label gap |
+| `--inline-3` | 12px | Between grouped items |
+| `--inline-4` | 16px | Between distinct groups |
+| `--stack-2` | 8px | Tightly related items |
+| `--stack-3` | 12px | Related items |
+| `--stack-4` | 16px | Distinct groups |
+| `--layout-4` | 40px | Page content padding |
 
 ### Decision tree
 
@@ -108,21 +108,19 @@ Always use inline styles — never Tailwind classes for typography:
 ### Decision tree
 
 **Backgrounds**
-
 - Default page or card background? → `--bg-surface-base`
 - Page content area (subtle grey)? → `--bg-surface-subtle`
 - Primary button? → `--bg-action-primary-idle`
 - Global header? → `--bg-navigation-bar`
 - Dark/inverse surface? → `--bg-surface-inverse`
+- Brand-colored bar (turquoise, e.g. KeyCaseDetails)? → `--bg-surface-brand`
 
 **Text**
-
 - Default body text? → `--text-surface-base`
 - Secondary or muted text? → `--text-surface-subtle`
 - Text on dark backgrounds? → `--text-surface-inverse`
 
 **Borders**
-
 - Default border? → `--border-surface-base`
 - Subtle border? → `--border-surface-subtle`
 
@@ -154,7 +152,7 @@ Always use inline styles — never Tailwind classes for typography:
 - Pill / fully rounded? → `--radius-full`
 
 ```tsx
-className = "rounded-(--radius-sm)";
-className = "rounded-(--radius-md)";
-className = "rounded-(--radius-full)";
+className="rounded-(--radius-sm)"
+className="rounded-(--radius-md)"
+className="rounded-(--radius-full)"
 ```
