@@ -15,6 +15,8 @@ import { Text } from '../components/ui/Text'
 import type { TextVariant } from '../components/ui/Text'
 import { ClockIcon } from '../components/ui/Icon'
 
+document.documentElement.setAttribute('data-theme', 'minerva')
+
 type Theme = 'minerva' | 'evolution'
 type Section = 'Typography' | 'Colors' | 'Spacing' | 'Radius' | 'Button' | 'Tag & Badge' | 'Shell'
 
