@@ -155,9 +155,7 @@ export function KeyCaseDetails() {
         </button>
       </div>
 
-      {/* Content — wraps independently of the chevron so wrapped rows
-          align with Member, not the chevron */}
-      <div className="flex flex-wrap items-start gap-(--inline-4) flex-1 min-w-0 overflow-hidden">
+      <div className="flex items-start gap-(--inline-4) flex-1 min-w-0 overflow-hidden">
         {SECTIONS.map((section) => (
           <SectionGrid key={section.primary.label} section={section} expanded={expanded} />
         ))}
