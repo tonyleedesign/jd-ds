@@ -18,7 +18,7 @@ export function Tab({ label, selected = false, onClick, rightSlot }: TabProps) {
       role="tab"
       aria-selected={selected}
       onClick={onClick}
-      className="relative inline-flex items-center px-(--inset-1) py-(--inset-3) bg-(--bg-navigation-item-secondary-idle) cursor-pointer select-none outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-(--border-navigation-primary-active)"
+      className="relative inline-flex items-center px-(--inset-1) py-(--inset-3) bg-(--bg-navigation-item-secondary-idle) cursor-pointer select-none whitespace-nowrap outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-(--border-navigation-primary-active)"
       style={{ border: 'none', boxShadow: 'inset 0 -2px 0 var(--border-surface-base)' }}
     >
       <span
