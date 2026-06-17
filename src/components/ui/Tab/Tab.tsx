@@ -1,14 +1,17 @@
+import type { ReactNode } from 'react'
+
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 export interface TabProps {
   label: string
   selected?: boolean
   onClick?: () => void
+  rightSlot?: ReactNode
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export function Tab({ label, selected = false, onClick }: TabProps) {
+export function Tab({ label, selected = false, onClick, rightSlot }: TabProps) {
   return (
     <button
       type="button"
@@ -21,21 +24,24 @@ export function Tab({ label, selected = false, onClick }: TabProps) {
       <span
         className={['px-(--inline-2) py-(--inset-1) rounded-(--radius-sm) transition-colors duration-150', !selected && 'hover:bg-(--bg-navigation-item-secondary-hover)'].filter(Boolean).join(' ')}
       >
-        <span
-          className="relative inline-block text-(--text-navigation-item-secondary-idle)"
-          style={{
-            fontSize:   'var(--menu-item-size)',
-            lineHeight: 'var(--menu-item-line-height)',
-            fontWeight: 'var(--menu-item-weight)',
-          }}
-        >
-          {label}
-          {selected && (
-            <span
-              className="absolute left-0 right-0 h-[2px] bg-(--border-navigation-primary-active)"
-              style={{ bottom: 'calc(-1 * var(--inset-5))' }}
-            />
-          )}
+        <span className="inline-flex items-center gap-(--inline-1)">
+          <span
+            className="relative inline-block text-(--text-navigation-item-secondary-idle)"
+            style={{
+              fontSize:   'var(--menu-item-size)',
+              lineHeight: 'var(--menu-item-line-height)',
+              fontWeight: 'var(--menu-item-weight)',
+            }}
+          >
+            {label}
+            {selected && (
+              <span
+                className="absolute left-0 right-0 h-[2px] bg-(--border-navigation-primary-active)"
+                style={{ bottom: 'calc(-1 * var(--inset-5))' }}
+              />
+            )}
+          </span>
+          {rightSlot}
         </span>
       </span>
     </button>
