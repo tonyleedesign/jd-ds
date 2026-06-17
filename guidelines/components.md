@@ -366,3 +366,10 @@ import { TabSet } from '../components/ui/TabSet'
   <Tab label="History"  selected={active === 'history'}  onClick={() => setActive('history')} />
 </TabSet>
 ```
+
+Use `rightSlot` to render an icon or lozenge to the right of the label:
+
+```tsx
+<Tab label="Overview" rightSlot={<Lozenge count={3} />} />
+<Tab label="Alerts"   rightSlot={<Icon icon={WarningIcon} size="small" />} />
+```

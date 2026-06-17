@@ -515,28 +515,15 @@ function TagBadgeSection() {
 
 function TabsSection() {
   const [activeTab, setActiveTab] = useState('overview')
-  const tabs = ['Overview', 'Details', 'History', 'Documents']
 
   return (
     <div className="flex flex-col gap-(--stack-5) p-(--inset-7)">
       <DemoRow label="TabSet">
         <TabSet>
-          {tabs.map((tab) => (
-            <Tab
-              key={tab}
-              label={tab}
-              selected={activeTab === tab.toLowerCase()}
-              onClick={() => setActiveTab(tab.toLowerCase())}
-            />
-          ))}
-        </TabSet>
-      </DemoRow>
-
-      <DemoRow label="Single selected">
-        <TabSet>
-          <Tab label="Overview" selected />
-          <Tab label="Details" />
-          <Tab label="History" />
+          <Tab label="Overview"  selected={activeTab === 'overview'}  onClick={() => setActiveTab('overview')}  rightSlot={<Lozenge count={3} />} />
+          <Tab label="Details"   selected={activeTab === 'details'}   onClick={() => setActiveTab('details')}   rightSlot={<Lozenge count={12} />} />
+          <Tab label="History"   selected={activeTab === 'history'}   onClick={() => setActiveTab('history')} />
+          <Tab label="Documents" selected={activeTab === 'documents'} onClick={() => setActiveTab('documents')} />
         </TabSet>
       </DemoRow>
     </div>

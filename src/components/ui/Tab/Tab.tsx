@@ -24,9 +24,9 @@ export function Tab({ label, selected = false, onClick, rightSlot }: TabProps) {
       <span
         className={['px-(--inline-2) py-(--inset-1) rounded-(--radius-sm) transition-colors duration-150', !selected && 'hover:bg-(--bg-navigation-item-secondary-hover)'].filter(Boolean).join(' ')}
       >
-        <span className="inline-flex items-center gap-(--inline-1)">
+        <span className="relative inline-flex items-center gap-(--inline-1)">
           <span
-            className="relative inline-block text-(--text-navigation-item-secondary-idle)"
+            className="text-(--text-navigation-item-secondary-idle)"
             style={{
               fontSize:   'var(--menu-item-size)',
               lineHeight: 'var(--menu-item-line-height)',
@@ -34,14 +34,14 @@ export function Tab({ label, selected = false, onClick, rightSlot }: TabProps) {
             }}
           >
             {label}
-            {selected && (
-              <span
-                className="absolute left-0 right-0 h-[2px] bg-(--border-navigation-primary-active)"
-                style={{ bottom: 'calc(-1 * var(--inset-5))' }}
-              />
-            )}
           </span>
           {rightSlot}
+          {selected && (
+            <span
+              className="absolute left-0 right-0 h-[2px] bg-(--border-navigation-primary-active)"
+              style={{ bottom: 'calc(-1 * var(--inset-5))' }}
+            />
+          )}
         </span>
       </span>
     </button>
