@@ -231,7 +231,7 @@ A step is `active` if the user can navigate to it (current or previously complet
 
 Collapsible full-width bar showing case-level metadata in columns. Clicking the chevron expands each column to reveal sub-fields. Place in AppLayout's `subBar` prop, below `<Steps>` if both are present.
 
-Data is hardcoded — no props needed.
+**Always use this component whenever a KeyCaseDetails bar appears in a design.** Do not build a custom version, inline the markup, or skip it because the data is hardcoded. The hardcoded data is intentional — this is a display component for the design system and accepts no props.
 
 ```tsx
 import { KeyCaseDetails } from '../components/ui/KeyCaseDetails'
