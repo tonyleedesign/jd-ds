@@ -276,6 +276,9 @@
   --breadcrumb-label-size: 0.625rem;
   --breadcrumb-label-line-height: 1rem;
   --breadcrumb-label-weight: 400;
+  --menu-item-size: 0.875rem;
+  --menu-item-line-height: 1.25rem;
+  --menu-item-weight: 400;
   --menu-item-lg-size: 1rem;
   --menu-item-lg-line-height: 1.5rem;
   --menu-item-lg-weight: 400;
@@ -566,6 +569,9 @@
   --breadcrumb-label-size: 0.625rem;
   --breadcrumb-label-line-height: 1rem;
   --breadcrumb-label-weight: 400;
+  --menu-item-size: 0.875rem;
+  --menu-item-line-height: 1.25rem;
+  --menu-item-weight: 400;
   --menu-item-lg-size: 1rem;
   --menu-item-lg-line-height: 1.5rem;
   --menu-item-lg-weight: 400;

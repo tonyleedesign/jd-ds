@@ -14,13 +14,15 @@ import { Badge } from '../components/ui/Badge'
 import { Text } from '../components/ui/Text'
 import type { TextVariant } from '../components/ui/Text'
 import { ClockIcon } from '../components/ui/Icon'
+import { Tab } from '../components/ui/Tab'
+import { TabSet } from '../components/ui/TabSet'
 
 document.documentElement.setAttribute('data-theme', 'minerva')
 
 type Theme = 'minerva' | 'evolution'
-type Section = 'Typography' | 'Colors' | 'Spacing' | 'Radius' | 'Button' | 'Tag & Badge' | 'Shell'
+type Section = 'Typography' | 'Colors' | 'Spacing' | 'Radius' | 'Button' | 'Tag & Badge' | 'Tabs' | 'Shell'
 
-const SECTIONS: Section[] = ['Typography', 'Colors', 'Spacing', 'Radius', 'Button', 'Tag & Badge', 'Shell']
+const SECTIONS: Section[] = ['Typography', 'Colors', 'Spacing', 'Radius', 'Button', 'Tag & Badge', 'Tabs', 'Shell']
 
 const PLACEHOLDER_ITEMS = [
   'Dashboard', 'Analytics', 'Reports', 'Transactions', 'Payments',
@@ -509,6 +511,38 @@ function TagBadgeSection() {
   )
 }
 
+// ─── Tabs ─────────────────────────────────────────────────────────────────────
+
+function TabsSection() {
+  const [activeTab, setActiveTab] = useState('overview')
+  const tabs = ['Overview', 'Details', 'History', 'Documents']
+
+  return (
+    <div className="flex flex-col gap-(--stack-5) p-(--inset-7)">
+      <DemoRow label="TabSet">
+        <TabSet>
+          {tabs.map((tab) => (
+            <Tab
+              key={tab}
+              label={tab}
+              selected={activeTab === tab.toLowerCase()}
+              onClick={() => setActiveTab(tab.toLowerCase())}
+            />
+          ))}
+        </TabSet>
+      </DemoRow>
+
+      <DemoRow label="Single selected">
+        <TabSet>
+          <Tab label="Overview" selected />
+          <Tab label="Details" />
+          <Tab label="History" />
+        </TabSet>
+      </DemoRow>
+    </div>
+  )
+}
+
 // ─── Shell ────────────────────────────────────────────────────────────────────
 
 function ShellSection() {
@@ -614,6 +648,7 @@ function DocContent() {
       {activeSection === 'Radius'     && <RadiusSection />}
       {activeSection === 'Button'     && <ButtonSection />}
       {activeSection === 'Tag & Badge' && <TagBadgeSection />}
+      {activeSection === 'Tabs'       && <TabsSection />}
       {activeSection === 'Shell'      && <ShellSection />}
     </AppLayout>
   )

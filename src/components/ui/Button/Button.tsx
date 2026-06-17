@@ -169,7 +169,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     'outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
     iconOnly
       ? 'p-(--inset-3) shrink-0'
-      : `py-(--inset-3) px-(--inset-5) gap-(--inline-2) ${fullWidth ? 'w-full sm:w-auto' : ''}`,
+      : `py-(--inset-3) ${variant === 'tertiary' ? 'px-0' : 'px-(--inset-5)'} gap-(--inline-2) ${fullWidth ? 'w-full sm:w-auto' : ''}`,
     isDisabled ? 'cursor-not-allowed' : 'cursor-pointer',
   ]
 

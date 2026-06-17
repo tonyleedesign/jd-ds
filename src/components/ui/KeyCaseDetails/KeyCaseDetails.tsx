@@ -123,12 +123,12 @@ function SectionGrid({ section, expanded }: { section: Section; expanded: boolea
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export function KeyCaseDetails({ className = '' }: { className?: string }) {
+export function KeyCaseDetails() {
   const [expanded, setExpanded] = useState(false)
 
   return (
     <div
-      className={`flex items-start gap-(--inline-4) px-(--inset-7) py-(--inset-3) bg-(--bg-surface-brand) w-full ${className}`}
+      className="flex items-start gap-(--inline-4) px-(--inset-7) py-(--inset-3) bg-(--bg-surface-brand) w-full"
     >
       {/* Chevron — sits outside the wrapping content area so wrapped rows
           align with the section content, not the chevron */}

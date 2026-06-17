@@ -11,7 +11,10 @@ This kit provides a complete set of components. Always use them — never build 
 | Component                | Import path                              |
 | ------------------------ | ---------------------------------------- |
 | `AppLayout`              | `../components/layout/AppLayout`         |
-| `SideNav`, `SideNavItem` | `../components/navigation/SideNav`       |
+| `GlobalHeader`           | `../components/navigation/GlobalHeader`  |
+| `ActionBar`              | `../components/navigation/ActionBar`     |
+| `Breadcrumb`             | `../components/navigation/Breadcrumb`    |
+| `SideNav`, `SideNavItem`, `SideNavGroup` | `../components/navigation/SideNav` |
 | `Button`                 | `../components/ui/Button`                |
 | `ButtonGroup`            | `../components/ui/ButtonGroup`           |
 | `Text`                   | `../components/ui/Text`                  |
@@ -23,6 +26,8 @@ This kit provides a complete set of components. Always use them — never build 
 | `KeyCaseDetails`         | `../components/ui/KeyCaseDetails`        |
 | `Icon` + all icons       | `../components/ui/Icon`                  |
 | `Spinner`                | `../components/ui/Spinner`               |
+| `Tab`                    | `../components/ui/Tab`                   |
+| `TabSet`                 | `../components/ui/TabSet`                |
 
 ---
 
@@ -343,4 +348,21 @@ Used automatically inside Button when `loading` is set. Only use standalone for 
 import { Spinner } from '../components/ui/Spinner'
 
 <Spinner />
+```
+
+---
+
+## Tab / TabSet
+
+`TabSet` is the container — it holds the bottom border and left/right padding. `Tab` is each individual tab. Manage selected state externally.
+
+```tsx
+import { Tab } from '../components/ui/Tab'
+import { TabSet } from '../components/ui/TabSet'
+
+<TabSet>
+  <Tab label="Overview" selected={active === 'overview'} onClick={() => setActive('overview')} />
+  <Tab label="Details"  selected={active === 'details'}  onClick={() => setActive('details')} />
+  <Tab label="History"  selected={active === 'history'}  onClick={() => setActive('history')} />
+</TabSet>
 ```

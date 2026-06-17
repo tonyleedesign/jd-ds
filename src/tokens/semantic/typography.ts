@@ -67,6 +67,10 @@ const minervaTypography = {
   'breadcrumb-label-weight':      fontWeight['regular'],
 
   // ─── Menu ─────────────────────────────────────────────────────────────────
+  'menu-item-size':           fontSize['200'],   // 14px / 0.875rem
+  'menu-item-line-height':    lineHeight['400'], // 20px / 1.25rem
+  'menu-item-weight':         fontWeight['regular'],
+
   'menu-item-lg-size':        fontSize['400'],   // 16px / 1rem
   'menu-item-lg-line-height': lineHeight['500'], // 24px / 1.5rem
   'menu-item-lg-weight':      fontWeight['regular'],
