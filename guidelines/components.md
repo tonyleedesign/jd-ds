@@ -56,12 +56,15 @@ export default function MyPage() {
 
 ### With page actions
 
+Always wrap actions in `ButtonGroup`. Order left to right: `tertiary | secondary | primary`. Omit variants that aren't needed — the rightmost button is always the most prominent one present.
+
 ```tsx
 <AppLayout
   ...
   actions={
     <ButtonGroup>
-      <Button variant="secondary">Export</Button>
+      <Button variant="tertiary" rightIcon={ChevronDownIcon}>Case Actions</Button>
+      <Button variant="secondary">Exit Case</Button>
       <Button variant="primary" leftIcon={AddIcon}>New Item</Button>
     </ButtonGroup>
   }
@@ -78,6 +81,23 @@ export default function MyPage() {
     <>
       <MetaItem label="Review Level" value="Initial" />
       <MetaItem icon={ClockIcon} label="Elapses" value="05/26/2026 12:00PM EST" />
+    </>
+  }
+>
+```
+
+### Completed case
+
+Use the `completed` prop to show the green ✓ "Case Completed" indicator inline with the title. Pass any additional status tags via `titleMeta`.
+
+```tsx
+<AppLayout
+  ...
+  completed
+  titleMeta={
+    <>
+      <Tag variant="system">RPh Review</Tag>
+      <Tag variant="warning">TDI</Tag>
     </>
   }
 >
@@ -206,40 +226,13 @@ A step is `active` if the user can navigate to it (current or previously complet
 
 Collapsible full-width bar showing case-level metadata in columns. Clicking the chevron expands each column to reveal sub-fields. Place in AppLayout's `subBar` prop, below `<Steps>` if both are present.
 
+Data is hardcoded — no props needed.
+
 ```tsx
 import { KeyCaseDetails } from '../components/ui/KeyCaseDetails'
 
-// No props needed — renders with default case data
 <AppLayout subBar={<KeyCaseDetails />}>
-
-// Override with real data if available
-<AppLayout
-  subBar={
-    <KeyCaseDetails
-      sections={[
-        {
-          fields: [
-            { label: 'Member',        value: 'Walter White' },
-            { label: 'Member ID',     value: '1234567' },
-            { label: 'Date of Birth', value: '01/01/2000' },
-          ],
-        },
-        {
-          fields: [
-            { label: 'Plan Benefit', value: 'J.P. Wynne High School', onClick: () => {} },
-            { label: 'Formulary',    value: 'Liberty', onClick: () => {}, primary: true },
-          ],
-        },
-      ]}
-    />
-  }
->
 ```
-
-**Field options:**
-- `onClick` — renders value as underlined link with LinkOut icon
-- `primary: true` — renders sub-field at the same visual level as `fields[0]` (semibold label, full row). Use when a sub-field is a peer of the primary, not subordinate to it (e.g. Formulary under Plan Benefit)
-- `siblings` — renders additional label/value pairs inline on the same row, separated by 16px (e.g. `siblings: [{ label: 'MONY', value: 'Y' }]`)
 
 ---
 

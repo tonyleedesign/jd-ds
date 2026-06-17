@@ -54,6 +54,8 @@ export interface AppLayoutProps {
   actions?: ReactNode
   /** Optional content rendered inline to the right of the title (e.g. Tag, MetaItem) */
   titleMeta?: ReactNode
+  /** When true, renders a green ✓ "Case Completed" indicator inline with the title */
+  completed?: boolean
 
   // ── SideNav ─────────────────────────────────────────────────────────────────
   /** Nav items rendered inside the SideNav. Omit this prop entirely if the design has no side navigation — the SideNav will not render at all. */
@@ -101,6 +103,7 @@ export function AppLayout({
   secondaryContent,
   actions,
   titleMeta,
+  completed,
   // SideNav
   sideNavContent,
   defaultSideNavOpen = true,
@@ -138,6 +141,7 @@ export function AppLayout({
       secondaryContent={secondaryContent}
       actions={actions}
       titleMeta={titleMeta}
+      completed={completed}
     />
   )
 

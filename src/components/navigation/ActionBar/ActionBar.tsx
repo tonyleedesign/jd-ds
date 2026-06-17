@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { Button } from '../../ui/Button'
+import { CheckMarkIcon } from '../../ui/Icon'
 import { ArrowLeftIcon } from '../../ui/Icon'
 import { Text } from '../../ui/Text'
 import { Breadcrumb } from '../Breadcrumb'
@@ -32,6 +33,11 @@ export interface ActionBarProps {
    * Only renders when title is present.
    */
   titleMeta?: ReactNode
+  /**
+   * When true, renders a green ✓ "Case Completed" indicator inline with the title,
+   * before any titleMeta content.
+   */
+  completed?: boolean
   className?: string
 }
 
@@ -44,7 +50,8 @@ export function ActionBar({
   secondaryContent,
   actions,
   titleMeta,
-  className = '',
+  completed  = false,
+  className  = '',
 }: ActionBarProps) {
   const hasTitleRow = title || onBackClick
 
@@ -80,8 +87,20 @@ export function ActionBar({
                   </Text>
                 )}
 
-                {titleMeta && (
+                {(completed || titleMeta) && (
                   <div className="flex items-center gap-(--inline-2)">
+                    {completed && (
+                      <>
+                        <CheckMarkIcon
+                          width={20}
+                          height={20}
+                          style={{ color: 'var(--icon-feedback-success-base)', flexShrink: 0 }}
+                        />
+                        <Text as="span" variant="label-md" className="text-(--text-feedback-success-base)">
+                          Case Completed
+                        </Text>
+                      </>
+                    )}
                     {titleMeta}
                   </div>
                 )}

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../components/ui/Button'
-import { AddIcon, ArrowRightIcon, DeleteIcon, StarFilledIcon, CheckMarkIcon, ChevronDownIcon } from '../components/ui/Icon'
+import { AddIcon, ArrowRightIcon, DeleteIcon, StarFilledIcon, ChevronDownIcon } from '../components/ui/Icon'
 import { AppLayout } from '../components/layout/AppLayout'
 import { SideNavItem, SideNavGroup } from '../components/navigation/SideNav'
 import { ButtonGroup } from '../components/ui/ButtonGroup'
@@ -581,19 +581,12 @@ function DocContent() {
           <Button variant="secondary">Exit Case</Button>
         </ButtonGroup>
       }
+      completed
       titleMeta={
-        <div className="inline-flex items-center gap-(--inline-2)">
-          <CheckMarkIcon
-            width={20}
-            height={20}
-            style={{ color: 'var(--icon-feedback-success-base)', flexShrink: 0 }}
-          />
-          <Text as="span" variant="label-md" className="text-(--text-feedback-success-base)">
-            Case Completed
-          </Text>
+        <>
           <Tag variant="system">RPh Review</Tag>
           <Tag variant="warning">TDI</Tag>
-        </div>
+        </>
       }
       secondaryContent={
         <>
